@@ -41,145 +41,41 @@ local QuestData = {
     {Min=1100, Max=1124, Quest="IceSideQuest", Monster="Lab Subordinate", Q=CFrame.new(-6061.841,15.926,4902.038), M=CFrame.new(-5720.557,63.309,4784.610)},
     {Min=1125, Max=1174, Quest="IceSideQuest", Monster="Horned Warrior", Q=CFrame.new(-6061.841,15.926,4902.038), M=CFrame.new(-6292.751,91.181,5502.649)},
     {Min=1175, Max=1199, Quest="FireSideQuest", Monster="Magma Ninja", Q=CFrame.new(-5429.047,15.977,5297.961), M=CFrame.new(-5461.838,130.363,5836.470)},
+
     -- Sea 3
-{Min=1200, Max=1249, Quest="FireSideQuest", Monster="Magma Ninja", Q=CFrame.new(-5429.047,15.977,5297.961), M=CFrame.new(-5461.838,130.363,5836.470)},
-{Min=1250, Max=1274, Quest="FireSideQuest", Monster="Lava Guardian", Q=CFrame.new(-5550.123,20.456,5400.789), M=CFrame.new(-5600.654,140.321,5900.987)},
-{Min=1275, Max=1299, Quest="FireSideQuest", Monster="Flame Samurai", Q=CFrame.new(-5650.234,18.567,5500.432), M=CFrame.new(-5700.876,150.654,6000.123)},
-{Min=1300, Max=1324, Quest="SkyExp3Quest", Monster="Sky Knight", Q=CFrame.new(-6000.345,200.456,6200.567), M=CFrame.new(-6100.789,250.876,6300.234)},
-{Min=1325, Max=1374, Quest="SkyExp3Quest", Monster="Storm General", Q=CFrame.new(-6200.456,220.345,6400.678), M=CFrame.new(-6300.123,270.987,6500.345)},
-{Min=1375, Max=1399, Quest="FountainQuest2", Monster="Sea Serpent", Q=CFrame.new(6500.234,50.123,6700.456), M=CFrame.new(6600.345,100.234,6800.567)},
-{Min=1400, Max=1449, Quest="FountainQuest2", Monster="Kraken Guard", Q=CFrame.new(6700.456,60.234,6900.678), M=CFrame.new(6800.567,120.345,7000.789)},
-{Min=1450, Max=1499, Quest="ColosseumQuest2", Monster="Arena Beast", Q=CFrame.new(-7200.123,30.456,7100.234), M=CFrame.new(-7300.234,90.567,7200.345)},
-{Min=1500, Max=1549, Quest="ColosseumQuest2", Monster="Gladiator Chief", Q=CFrame.new(-7400.345,40.678,7300.456), M=CFrame.new(-7500.456,100.789,7400.567)},
-{Min=1550, Max=1599, Quest="MagmaQuest2", Monster="Inferno Titan", Q=CFrame.new(-7600.567,50.789,7500.678), M=CFrame.new(-7700.678,120.890,7600.789)},
-{Min=1600, Max=1649, Quest="MagmaQuest2", Monster="Lava Emperor", Q=CFrame.new(-7800.678,60.890,7700.789), M=CFrame.new(-7900.789,130.901,7800.890)},
-{Min=1650, Max=1699, Quest="IceSideQuest2", Monster="Frost Giant", Q=CFrame.new(-8000.789,70.901,7900.890), M=CFrame.new(-8100.890,150.012,8000.901)},
-{Min=1700, Max=1749, Quest="IceSideQuest2", Monster="Glacial Warlord", Q=CFrame.new(-8200.890,80.012,8100.901), M=CFrame.new(-8300.901,160.123,8200.012)},
-{Min=1750, Max=1799, Quest="SnowMountainQuest2", Monster="Yeti King", Q=CFrame.new(-8400.901,90.123,8300.012), M=CFrame.new(-8500.012,170.234,8400.123)},
-{Min=1800, Max=1849, Quest="SnowMountainQuest2", Monster="Ice Dragon", Q=CFrame.new(-8600.012,100.234,8500.123), M=CFrame.new(-8700.123,180.345,8600.234)},
-{Min=1850, Max=1899, Quest="SkyExp4Quest", Monster="Thunder Beast", Q=CFrame.new(-8800.123,110.345,8700.234), M=CFrame.new(-8900.234,190.456,8800.345)},
-{Min=1900, Max=1949, Quest="SkyExp4Quest", Monster="Lightning General", Q=CFrame.new(-9000.234,120.456,8900.345), M=CFrame.new(-9100.345,200.567,9000.456)},
-{Min=1950, Max=1999, Quest="FountainQuest3", Monster="Poseidon Guard", Q=CFrame.new(9200.345,130.567,9100.456), M=CFrame.new(9300.456,210.678,9200.567)},
-{Min=2000, Max=2049, Quest="FountainQuest3", Monster="Tsunami Warrior", Q=CFrame.new(9400.456,140.678,9300.567), M=CFrame.new(9500.567,220.789,9400.678)},
-  --// SEA 3 QUESTS 2000+
-if Lv >= 2000 and Lv <= 2049 then
-    Ms = "Tyrant [Lv. 2000]"
-    NameQuest = "TyrantQuest"
-    QuestLv = 1
-    NameMon = "Tyrant"
-    CFrameQ = CFrame.new(8200, 50, 2300)
-    CFrameMon = CFrame.new(8450, 50, 2500)
-elseif Lv >= 2050 and Lv <= 2099 then
-    Ms = "Vice Admiral [Lv. 2050]"
-    NameQuest = "MarineBossQuest1"
-    QuestLv = 2
-    NameMon = "Vice Admiral"
-    CFrameQ = CFrame.new(8600, 60, 2400)
-    CFrameMon = CFrame.new(8800, 60, 2600)
-elseif Lv >= 2100 and Lv <= 2149 then
-    Ms = "Rogue Pirate [Lv. 2100]"
-    NameQuest = "PirateBossQuest1"
-    QuestLv = 1
-    NameMon = "Rogue Pirate"
-    CFrameQ = CFrame.new(9000, 45, 2200)
-    CFrameMon = CFrame.new(9200, 45, 2400)
-elseif Lv >= 2150 and Lv <= 2199 then
-    Ms = "Dark Commander [Lv. 2150]"
-    NameQuest = "SkyBossQuest1"
-    QuestLv = 2
-    NameMon = "Dark Commander"
-    CFrameQ = CFrame.new(9400, 70, 2100)
-    CFrameMon = CFrame.new(9600, 70, 2300)
-elseif Lv >= 2200 and Lv <= 2249 then
-    Ms = "Sea Emperor [Lv. 2200]"
-    NameQuest = "FountainBossQuest"
-    QuestLv = 1
-    NameMon = "Sea Emperor"
-    CFrameQ = CFrame.new(9800, 80, 2500)
-    CFrameMon = CFrame.new(10000, 80, 2700)
-elseif Lv >= 2250 and Lv <= 2299 then
-    Ms = "Royal Guard Elite [Lv. 2250]"
-    NameQuest = "SkyExpBossQuest"
-    QuestLv = 2
-    NameMon = "Royal Guard Elite"
-    CFrameQ = CFrame.new(10200, 90, 2600)
-    CFrameMon = CFrame.new(10400, 90, 2800)
-elseif Lv >= 2300 and Lv <= 2349 then
-    Ms = "Dark Legionnaire [Lv. 2300]"
-    NameQuest = "DarkBossQuest"
-    QuestLv = 1
-    NameMon = "Dark Legionnaire"
-    CFrameQ = CFrame.new(10600, 100, 2400)
-    CFrameMon = CFrame.new(10800, 100, 2600)
-elseif Lv >= 2350 and Lv <= 2399 then
-    Ms = "God's Soldier [Lv. 2350]"
-    NameQuest = "SkyGodQuest"
-    QuestLv = 2
-    NameMon = "God's Soldier"
-    CFrameQ = CFrame.new(11000, 120, 2500)
-    CFrameMon = CFrame.new(11200, 120, 2700)
-elseif Lv >= 2400 and Lv <= 2449 then
-    Ms = "Fallen General [Lv. 2400]"
-    NameQuest = "MarineBossQuest2"
-    QuestLv = 1
-    NameMon = "Fallen General"
-    CFrameQ = CFrame.new(11400, 140, 2600)
-    CFrameMon = CFrame.new(11600, 140, 2800)
-elseif Lv >= 2450 and Lv <= 2499 then
-    Ms = "Sky Captain [Lv. 2450]"
-    NameQuest = "SkyBossQuest2"
-    QuestLv = 2
-    NameMon = "Sky Captain"
-    CFrameQ = CFrame.new(11800, 160, 2700)
-    CFrameMon = CFrame.new(12000, 160, 2900)
-elseif Lv >= 2500 and Lv <= 2549 then
-    Ms = "Ocean Commander [Lv. 2500]"
-    NameQuest = "FountainBossQuest2"
-    QuestLv = 1
-    NameMon = "Ocean Commander"
-    CFrameQ = CFrame.new(12200, 180, 2800)
-    CFrameMon = CFrame.new(12400, 180, 3000)
-elseif Lv >= 2550 and Lv <= 2599 then
-    Ms = "Dread Pirate [Lv. 2550]"
-    NameQuest = "PirateBossQuest2"
-    QuestLv = 2
-    NameMon = "Dread Pirate"
-    CFrameQ = CFrame.new(12600, 200, 2900)
-    CFrameMon = CFrame.new(12800, 200, 3100)
-elseif Lv >= 2600 and Lv <= 2649 then
-    Ms = "Chaos Soldier [Lv. 2600]"
-    NameQuest = "DarkBossQuest2"
-    QuestLv = 1
-    NameMon = "Chaos Soldier"
-    CFrameQ = CFrame.new(13000, 220, 3000)
-    CFrameMon = CFrame.new(13200, 220, 3200)
-elseif Lv >= 2650 and Lv <= 2699 then
-    Ms = "Sea King [Lv. 2650]"
-    NameQuest = "FountainBossQuest3"
-    QuestLv = 2
-    NameMon = "Sea King"
-    CFrameQ = CFrame.new(13400, 240, 3100)
-    CFrameMon = CFrame.new(13600, 240, 3300)
-elseif Lv >= 2700 and Lv <= 2749 then
-    Ms = "Dark Admiral [Lv. 2700]"
-    NameQuest = "MarineBossQuest3"
-    QuestLv = 1
-    NameMon = "Dark Admiral"
-    CFrameQ = CFrame.new(13800, 260, 3200)
-    CFrameMon = CFrame.new(14000, 260, 3400)
-elseif Lv >= 2750 and Lv <= 2799 then
-    Ms = "God Emperor [Lv. 2750]"
-    NameQuest = "SkyBossQuest3"
-    QuestLv = 2
-    NameMon = "God Emperor"
-    CFrameQ = CFrame.new(14200, 280, 3300)
-    CFrameMon = CFrame.new(14400, 280, 3500)
-elseif Lv >= 2800 and Lv <= 2849 then
-    Ms = "Ultimate Tyrant [Lv. 2800]"
-    NameQuest = "FinalBossQuest"
-    QuestLv = 1
-    NameMon = "Ultimate Tyrant"
-    CFrameQ = CFrame.new(14600, 300, 3400)
-    CFrameMon = CFrame.new(14800, 300, 3600)
-  end
+    {Min=1200, Max=1249, Quest="FireSideQuest", Monster="Magma Ninja", Q=CFrame.new(-5429.047,15.977,5297.961), M=CFrame.new(-5461.838,130.363,5836.470)},
+    {Min=1250, Max=1274, Quest="FireSideQuest", Monster="Lava Guardian", Q=CFrame.new(-5550.123,20.456,5400.789), M=CFrame.new(-5600.654,140.321,5900.987)},
+    {Min=1275, Max=1299, Quest="FireSideQuest", Monster="Flame Samurai", Q=CFrame.new(-5650.234,18.567,5500.432), M=CFrame.new(-5700.876,150.654,6000.123)},
+    {Min=1300, Max=1324, Quest="SkyExp3Quest", Monster="Sky Knight", Q=CFrame.new(-6000.345,200.456,6200.567), M=CFrame.new(-6100.789,250.876,6300.234)},
+    {Min=1325, Max=1374, Quest="SkyExp3Quest", Monster="Storm General", Q=CFrame.new(-6200.456,220.345,6400.678), M=CFrame.new(-6300.123,270.987,6500.345)},
+    {Min=1375, Max=1399, Quest="FountainQuest2", Monster="Sea Serpent", Q=CFrame.new(6500.234,50.123,6700.456), M=CFrame.new(6600.345,100.234,6800.567)},
+    {Min=1400, Max=1449, Quest="FountainQuest2", Monster="Kraken Guard", Q=CFrame.new(6700.456,60.234,6900.678), M=CFrame.new(6800.567,120.345,7000.789)},
+    {Min=1450, Max=1499, Quest="ColosseumQuest2", Monster="Arena Beast", Q=CFrame.new(-7200.123,30.456,7100.234), M=CFrame.new(-7300.234,90.567,7200.345)},
+    {Min=1500, Max=1549, Quest="ColosseumQuest2", Monster="Gladiator Chief", Q=CFrame.new(-7400.345,40.678,7300.456), M=CFrame.new(-7500.456,100.789,7400.567)},
+    {Min=1550, Max=1599, Quest="MagmaQuest2", Monster="Inferno Titan", Q=CFrame.new(-7600.567,50.789,7500.678), M=CFrame.new(-7700.678,120.890,7600.789)},
+    {Min=1600, Max=1649, Quest="MagmaQuest2", Monster="Lava Emperor", Q=CFrame.new(-7800.678,60.890,7700.789), M=CFrame.new(-7900.789,130.901,7800.890)},
+    {Min=1650, Max=1699, Quest="IceSideQuest2", Monster="Frost Giant", Q=CFrame.new(-8000.789,70.901,7900.890), M=CFrame.new(-8100.890,150.012,8000.901)},
+    {Min=1700, Max=1749, Quest="IceSideQuest2", Monster="Glacial Warlord", Q=CFrame.new(-8200.890,80.012,8100.901), M=CFrame.new(-8300.901,160.123,8200.012)},
+    {Min=1750, Max=1799, Quest="SnowMountainQuest2", Monster="Yeti King", Q=CFrame.new(-8400.901,90.123,8300.012), M=CFrame.new(-8500.012,170.234,8400.123)},
+    {Min=1800, Max=1849, Quest="SnowMountainQuest2", Monster="Ice Dragon", Q=CFrame.new(-8600.012,100.234,8500.123), M=CFrame.new(-8700.123,180.345,8600.234)},
+    {Min=1850, Max=1899, Quest="SkyExp4Quest", Monster="Thunder Beast", Q=CFrame.new(-8800.123,110.345,8700.234), M=CFrame.new(-8900.234,190.456,8800.345)},
+    {Min=1900, Max=1949, Quest="SkyExp4Quest", Monster="Lightning General", Q=CFrame.new(-9000.234,120.456,8900.345), M=CFrame.new(-9100.345,200.567,9000.456)},
+    {Min=1950, Max=1999, Quest="FountainQuest3", Monster="Poseidon Guard", Q=CFrame.new(9200.345,130.567,9100.456), M=CFrame.new(9300.456,210.678,9200.567)},
+    {Min=2000, Max=2049, Quest="TyrantQuest", Monster="Tyrant", Q=CFrame.new(8200,50,2300), M=CFrame.new(8450,50,2500)},
+    {Min=2050, Max=2099, Quest="MarineBossQuest1", Monster="Vice Admiral", Q=CFrame.new(8600,60,2400), M=CFrame.new(8800,60,2600)},
+    {Min=2100, Max=2149, Quest="PirateBossQuest1", Monster="Rogue Pirate", Q=CFrame.new(9000,45,2200), M=CFrame.new(9200,45,2400)},
+    {Min=2150, Max=2199, Quest="SkyBossQuest1", Monster="Dark Commander", Q=CFrame.new(9400,70,2100), M=CFrame.new(9600,70,2300)},
+    {Min=2200, Max=2249, Quest="FountainBossQuest", Monster="Sea Emperor", Q=CFrame.new(9800,80,2500), M=CFrame.new(10000,80,2700)},
+    {Min=2250, Max=2299, Quest="SkyExpBossQuest", Monster="Royal Guard Elite", Q=CFrame.new(10200,90,2600), M=CFrame.new(10400,90,2800)},
+    {Min=2300, Max=2349, Quest="DarkBossQuest", Monster="Dark Legionnaire", Q=CFrame.new(10600,100,2400), M=CFrame.new(10800,100,2600)},
+    {Min=2350, Max=2399, Quest="SkyGodQuest", Monster="God's Soldier", Q=CFrame.new(11000,120,2500), M=CFrame.new(11200,120,2700)},
+    {Min=2400, Max=2449, Quest="MarineBossQuest2", Monster="Fallen General", Q=CFrame.new(11400,140,2600), M=CFrame.new(11600,140,2800)},
+    {Min=2450, Max=2499, Quest="SkyBossQuest2", Monster="Sky Captain", Q=CFrame.new(11800,160,2700), M=CFrame.new(12000,160,2900)},
+    {Min=2500, Max=2549, Quest="FountainBossQuest2", Monster="Ocean Commander", Q=CFrame.new(12200,180,2800), M=CFrame.new(12400,180,3000)},
+    {Min=2550, Max=2599, Quest="PirateBossQuest2", Monster="Dread Pirate", Q=CFrame.new(12600,200,2900), M=CFrame.new(12800,200,3100)},
+    {Min=2600, Max=2649, Quest="DarkBossQuest2", Monster="Chaos Soldier", Q=CFrame.new(13000,220,3000), M=CFrame.new(13200,220,3200)},
+    {Min=2650, Max=2699, Quest="FountainBossQuest3", Monster="Sea King", Q=CFrame.new(13400,240,3100), M=CFrame.new(13600,240,3300)},
+    {Min=2700, Max=2749, Quest="MarineBossQuest3", Monster="Dark Admiral", Q=CFrame.new(13800,260,3200), M=CFrame.new(14000,260,3400)},
+    {Min=2750, Max=2799, Quest="SkyBossQuest3", Monster="God Emperor", Q=CFrame.new(14200,280,3300), M=CFrame.new(14400,280,3500)},
+    {Min=2800, Max=2849, Quest="FinalBossQuest", Monster="Ultimate Tyrant", Q=CFrame.new(14600,300,3400), M=CFrame.new(14800,300,3600)}
 }
