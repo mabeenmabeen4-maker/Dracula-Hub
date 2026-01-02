@@ -1,4 +1,4 @@
-requests {
+requests = {
     {Min=1, Max=9, Quest="BanditQuest1", Monster="Bandit", Q=CFrame.new(1060.938,16.455,1547.784)},
     {Min=10, Max=14, Quest="JungleQuest1", Monster="Monkey", Q=CFrame.new(-1601.655,36.852,153.388)},
     {Min=15, Max=29, Quest="JungleQuest2", Monster="Gorilla", Q=CFrame.new(-1601.655,36.852,153.388)},
