@@ -1,0 +1,190 @@
+-- Services
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+
+-- Player
+local Player = Players.LocalPlayer
+repeat wait() until Player and Player:FindFirstChild("PlayerGui")
+
+-- ================= CLEAN UP =================
+-- Destroy old GUIs
+for _, n in ipairs({"PopBloxGUI","PopBloxIcon"}) do
+    local old = Player.PlayerGui:FindFirstChild(n)
+    if old then old:Destroy() end
+end
+
+-- Disconnect old connections if exist
+if _G.PopBloxConnections then
+    for _, conn in pairs(_G.PopBloxConnections) do
+        if conn.Connected then conn:Disconnect() end
+    end
+end
+_G.PopBloxConnections = {}
+
+-- ================= CONFIG =================
+local DEFAULT_SPEED = 16
+local currentSpeed = DEFAULT_SPEED
+
+-- ================= GUI =================
+local ScreenGui = Instance.new("ScreenGui", Player.PlayerGui)
+ScreenGui.Name = "PopBloxGUI"
+ScreenGui.ResetOnSpawn = false
+
+local Main = Instance.new("Frame", ScreenGui)
+Main.Size = UDim2.new(0,380,0,220)
+Main.Position = UDim2.new(-1,0,0,0)
+Main.BackgroundColor3 = Color3.fromRGB(40,40,40)
+Main.BorderColor3 = Color3.fromRGB(0,255,180)
+Main.BorderSizePixel = 2
+Main.Active = true
+Main.Draggable = true
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0,12)
+
+local Content = Instance.new("Frame", Main)
+Content.Size = UDim2.new(1,-20,1,-50)
+Content.Position = UDim2.new(0,10,0,40)
+Content.BackgroundTransparency = 1
+
+-- ================= TOGGLES =================
+local toggles = {}
+local function createToggle(name, y)
+    local btn = Instance.new("TextButton", Content)
+    btn.Size = UDim2.new(0,300,0,30)
+    btn.Position = UDim2.new(0,0,0,y)
+    btn.BackgroundColor3 = Color3.fromRGB(50,50,50)
+    btn.TextColor3 = Color3.new(1,1,1)
+    btn.TextSize = 16
+    btn.Text = name.." [✗]"
+    btn.AutoButtonColor = false
+    local enabled = false
+
+    btn.MouseEnter:Connect(function() btn.BackgroundColor3 = Color3.fromRGB(70,70,70) end)
+    btn.MouseLeave:Connect(function() btn.BackgroundColor3 = enabled and Color3.fromRGB(0,200,0) or Color3.fromRGB(50,50,50) end)
+    btn.MouseButton1Click:Connect(function()
+        enabled = not enabled
+        btn.Text = name..(enabled and " [✓]" or " [✗]")
+        btn.BackgroundColor3 = enabled and Color3.fromRGB(0,200,0) or Color3.fromRGB(50,50,50)
+        if name == "Custom Speed" then applySpeed() end
+    end)
+
+    toggles[name] = function() return enabled end
+    return toggles[name]
+end
+
+local InfiniteJump = createToggle("Infinite Jump",0)
+local Noclip = createToggle("Noclip",40)
+local SpeedToggle = createToggle("Custom Speed",80)
+
+-- ================= SPEED INPUT =================
+local SpeedInput = Instance.new("TextBox", Content)
+SpeedInput.Size = UDim2.new(0,120,0,28)
+SpeedInput.Position = UDim2.new(0,0,0,120)
+SpeedInput.PlaceholderText = "WalkSpeed"
+SpeedInput.TextSize = 16
+SpeedInput.BackgroundColor3 = Color3.fromRGB(60,60,60)
+SpeedInput.TextColor3 = Color3.new(1,1,1)
+SpeedInput.ClearTextOnFocus = false
+SpeedInput.Text = tostring(DEFAULT_SPEED)
+
+-- Apply speed function
+function applySpeed()
+    if Player.Character and Player.Character:FindFirstChild("Humanoid") then
+        local h = Player.Character.Humanoid
+        if SpeedToggle() then
+            local v = tonumber(SpeedInput.Text)
+            currentSpeed = (v and v>0) and v or DEFAULT_SPEED
+        else
+            currentSpeed = DEFAULT_SPEED
+        end
+        h.WalkSpeed = currentSpeed
+    end
+end
+SpeedInput.FocusLost:Connect(applySpeed)
+
+-- ================= BUTTONS =================
+local CloseBtn = Instance.new("TextButton", Main)
+CloseBtn.Size = UDim2.new(0,35,0,35)
+CloseBtn.Position = UDim2.new(1,-40,0,5)
+CloseBtn.Text = "X"
+CloseBtn.TextSize = 20
+CloseBtn.BackgroundColor3 = Color3.fromRGB(180,0,0)
+CloseBtn.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", CloseBtn).CornerRadius = UDim.new(0,8)
+
+local IconGui = Instance.new("ScreenGui", Player.PlayerGui)
+IconGui.Name = "PopBloxIcon"
+local ShowBtn = Instance.new("TextButton", IconGui)
+ShowBtn.Size = UDim2.new(0,50,0,50)
+ShowBtn.Position = UDim2.new(0,10,0,50)
+ShowBtn.Text = "🎮"
+ShowBtn.TextColor3 = Color3.new(1,1,1)
+ShowBtn.BackgroundColor3 = Color3.fromRGB(0,160,255)
+Instance.new("UICorner", ShowBtn).CornerRadius = UDim.new(0.5,0)
+ShowBtn.Visible = false
+
+local function slideGUI(show)
+    local targetPos = show and UDim2.new(0.2,0,0,0) or UDim2.new(-1,0,0,0)
+    TweenService:Create(Main, TweenInfo.new(0.8, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position=targetPos}):Play()
+end
+
+CloseBtn.MouseButton1Click:Connect(function()
+    slideGUI(false)
+    wait(0.2)
+    ShowBtn.Visible = true
+end)
+ShowBtn.MouseButton1Click:Connect(function()
+    slideGUI(true)
+    ShowBtn.Visible = false
+end)
+
+-- ================= FEATURES =================
+-- Infinite Jump
+table.insert(_G.PopBloxConnections, UserInputService.JumpRequest:Connect(function()
+    if InfiniteJump() and Player.Character and Player.Character:FindFirstChild("Humanoid") then
+        Player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    end
+end))
+
+-- Noclip (disables collision every frame while on)
+table.insert(_G.PopBloxConnections, RunService.Stepped:Connect(function()
+    if Player.Character and Noclip() then
+        for _, p in pairs(Player.Character:GetDescendants()) do
+            if p:IsA("BasePart") then p.CanCollide = false end
+        end
+    end
+end))
+
+-- Custom Speed enforcement
+table.insert(_G.PopBloxConnections, RunService.RenderStepped:Connect(function()
+    if Player.Character and Player.Character:FindFirstChild("Humanoid") then
+        local h = Player.Character.Humanoid
+        if SpeedToggle() then
+            local v = tonumber(SpeedInput.Text)
+            currentSpeed = (v and v>0) and v or DEFAULT_SPEED
+        else
+            currentSpeed = DEFAULT_SPEED
+        end
+        if h.WalkSpeed ~= currentSpeed then
+            h.WalkSpeed = currentSpeed
+        end
+    end
+end))
+
+-- Scroll wheel to adjust speed
+table.insert(_G.PopBloxConnections, UserInputService.InputChanged:Connect(function(input)
+    if SpeedToggle() and input.UserInputType==Enum.UserInputType.MouseWheel then
+        local delta = 0
+        if input.Position and input.Position.Z then
+            delta = input.Position.Z>0 and 1 or -1
+        end
+        local current = tonumber(SpeedInput.Text) or DEFAULT_SPEED
+        current = math.clamp(current+delta, 0, 500)
+        SpeedInput.Text = tostring(current)
+        currentSpeed = current
+    end
+end))
+
+-- ================= OPEN GUI ON START =================
+slideGUI(true)
